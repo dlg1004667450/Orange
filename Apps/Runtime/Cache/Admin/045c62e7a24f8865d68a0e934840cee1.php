@@ -30,9 +30,8 @@
 						<td><?php echo ($v["Title"]); ?></td>
 						<td><?php echo ($v["Presentation"]); ?></td>
 						<td><?php echo ($v["Status"]); ?></td>
-						<td><a href="<?php echo U(del,array('id'=>$v['Id']));?>">删除</a></td>
-						<td><a href="">编辑</a></td>
-
+						<td><a href="<?php echo U(del,array('Id'=>$v['Id']));?>">删除</a></td>
+						<td><a href="<?php echo U(modif,array('Id'=>$v['Id']));?>">编辑</a></td>
 					</tr><?php endforeach; endif; ?>
 			</table>
 			<?php echo ($page); ?>

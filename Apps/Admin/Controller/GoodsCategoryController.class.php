@@ -5,12 +5,15 @@ namespace Admin\Controller;
 use Think\Controller;
 
 /**
- * 商品分类管理
+ * 后台商品分类管理
  *
  * @author NENER
  *        
  */
 class GoodsCategoryController extends Controller {
+	/**
+	 * 首页
+	 */
 	public function index() {
 		$model = M ( 'goods_category' );
 		// 查询条件
@@ -28,12 +31,42 @@ class GoodsCategoryController extends Controller {
 		$this->assign ( 'page', $showPage );
 		$this->display ( 'index/category' );
 	}
+	/**
+	 * 删除
+	 */
 	public function del() {
-		$id = I ( 'get.id' );
+		$id = I ( 'get.Id' );
 		if ($id) {
-			$this->success("页面不存在",U('index'));
+			$whereArr = array (
+					'Id' => $id 
+			);
+			if (M ( 'goods_category' )->where ( $whereArr )->delete ()) {
+				$this->success ( "操作成功", U ( 'index' ) );
+			} else {
+				$this->error ( "删除失败", U ( 'index' ) );
+			}
 		} else {
-			$this->success("页面不存在",U('index'));
+			$this->error ( "页面不存在", U ( 'index' ) );
+		}
+	}
+	/**
+	 * 修改
+	 */
+	public function modif() {
+		$id = I ( 'get.Id' );
+		if ($id) {
+			$whereArr = array (
+					'Id' => $id 
+			);
+			$model=M ( 'goods_category' )->where ( $whereArr )->find ();
+			if ($model) {
+				
+				$this->success ( "操作成功", U ( 'index' ) );
+			} else {
+				$this->error ( "删除失败", U ( 'index' ) );
+			}
+		} else {
+			$this->error ( "删除失败", U ( 'index' ) );
 		}
 	}
 }

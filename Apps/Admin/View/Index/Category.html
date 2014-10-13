@@ -31,9 +31,8 @@
 						<td>{$v.Title}</td>
 						<td>{$v.Presentation}</td>
 						<td>{$v.Status}</td>
-						<td><a href="{:U(del,array('id'=>$v['Id']))}">删除</a></td>
-						<td><a href="">编辑</a></td>
-
+						<td><a href="{:U(del,array('Id'=>$v['Id']))}">删除</a></td>
+						<td><a href="{:U(modif,array('Id'=>$v['Id']))}">编辑</a></td>
 					</tr>
 				</foreach>
 			</table>
