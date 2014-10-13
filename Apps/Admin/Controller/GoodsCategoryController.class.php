@@ -23,9 +23,12 @@ class GoodsCategoryController extends Controller {
 						- 1 
 				) 
 		);
+		//总数
 		$allCount = $model->where ( $wherrArr )->count ();
+		//分页
 		$Page = new \Think\Page ( $allCount, 10 );
 		$showPage = $Page->show ();
+		//分页查询
 		$list = $model->where ( $wherrArr )->limit ( $Page->firstRow . ',' . $Page->listRows )->select ();
 		$this->assign ( 'list', $list );
 		$this->assign ( 'page', $showPage );
@@ -60,8 +63,13 @@ class GoodsCategoryController extends Controller {
 			);
 			$model=M ( 'goods_category' )->where ( $whereArr )->find ();
 			if ($model) {
+				$whereArrKeyword=array(
+					'CaregoryId'=>$id
+				);
+				$list=M('goods_category_keyword')->where($whereArrKeyword)->select();
 				
-				$this->success ( "操作成功", U ( 'index' ) );
+				$this->assign ( 'list', $list );
+				$this->display ( 'index/category' );
 			} else {
 				$this->error ( "删除失败", U ( 'index' ) );
 			}
