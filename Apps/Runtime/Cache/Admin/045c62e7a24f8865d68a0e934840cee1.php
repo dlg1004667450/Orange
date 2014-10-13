@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="/Orange/Public/css/bootstrap-theme.css"/>
 	<link rel="stylesheet" href="/Orange/Public/css/bootstrap.css"/>
-	<link rel="stylesheet" href="/Orange/Public/css/huaxi_css.css"/>
+	<link rel="stylesheet" href="/Orange/Public/css/huaxi_css.css" />
 	<link rel="shortcut icon" href="/Orange/Public/Img/favicon.png" type="image/x-icon"/>
 	<script src="/Orange/Public/js/jquery-1.8.0.min.js"></script>
 	<script src="/Orange/Public/js/bootstrap.js"></script>
@@ -16,6 +16,10 @@
 	<div id="wrap">
 		<div class="container">
 			<!-- 分类管理-->
+			<div class="text-center">
+				<h1>分类列表</h1>
+			</div>
+			<br>
 			<table class="table table-bordered">
 				<tr>
 					<th>Id</th>
@@ -30,8 +34,12 @@
 						<td><?php echo ($v["Title"]); ?></td>
 						<td><?php echo ($v["Presentation"]); ?></td>
 						<td><?php echo ($v["Status"]); ?></td>
-						<td><a href="<?php echo U(del,array('Id'=>$v['Id']));?>">删除</a></td>
-						<td><a href="<?php echo U(modif,array('Id'=>$v['Id']));?>">编辑</a></td>
+						<td>
+							<a href="<?php echo U(del,array('Id'=>$v['Id']));?>">删除</a>
+						</td>
+						<td>
+							<a href="<?php echo U(update,array('Id'=>$v['Id']));?>">编辑</a>
+						</td>
 					</tr><?php endforeach; endif; ?>
 			</table>
 			<?php echo ($page); ?>
