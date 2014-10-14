@@ -5,5 +5,5 @@ if (version_compare ( PHP_VERSION, '5.3.0', '<' ))
 	die ( 'require PHP > 5.3.0 !' );
 define ( 'APP_DEBUG', True );
 define ( 'APP_NAME', 'Orange' );
-define ( 'APP_PATH', './Apps/' );
+define ( 'APP_PATH', './Apps/' );//123
 require './ORG/ThinkPHP/ThinkPHP.php';
