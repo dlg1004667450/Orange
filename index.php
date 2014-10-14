@@ -6,6 +6,6 @@ if (version_compare ( PHP_VERSION, '5.3.0', '<' ))
 define ( 'APP_DEBUG', True );
 define ( 'APP_NAME', 'Orange' );
 define ( 'APP_PATH', './Apps/' );
-//ok
+//okfsgfdsgds
 require './ORG/ThinkPHP/ThinkPHP.php';
 //no
