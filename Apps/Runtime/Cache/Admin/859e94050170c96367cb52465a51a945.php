@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit();?>﻿<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -14,7 +14,9 @@
 <body>
 	<!--顶-->
 	<div id="wrap">
-			<div class="container">
+		<!-- 分类管理-->
+
+		<div class="container">
 			<div class="collapse navbar-collapse" >
 				<ul class="nav navbar-nav">
 					<li class="active">
@@ -28,39 +30,7 @@
 					</li>
 				</ul>
 			</div>
-			<!-- /.navbar-collapse -->
-		</div>
-		<div class="container">
-			<!-- 分类管理-->
-			<div class="text-center">
-				<h1>分类列表</h1>
-			</div>
-			<br>
-			<div><a href="<?php echo U('add');?>" class="btn btn-default">添加</a></div>
-			<br>
-			<table class="table table-bordered">
-				<tr>
-					<th>Id</th>
-					<th>Title</th>
-					<th>Pre</th>
-					<th>Status</th>
-					<th colspan="2">Operate</th>
-				</tr>
-
-				<?php if(is_array($list)): foreach($list as $key=>$v): ?><tr>
-						<td><?php echo ($v["Id"]); ?></td>
-						<td><?php echo ($v["Title"]); ?></td>
-						<td><?php echo ($v["Presentation"]); ?></td>
-						<td><?php echo ($v["Status"]); ?></td>
-						<td>
-							<a href="<?php echo U(del,array('Id'=>$v['Id']));?>">删除</a>
-						</td>
-						<td>
-							<a href="<?php echo U(update,array('Id'=>$v['Id']));?>">编辑</a>
-						</td>
-					</tr><?php endforeach; endif; ?>
-			</table>
-			<?php echo ($page); ?>
+			<!-- /.navbar-collapse -->		
 		</div>
 
 	</div>

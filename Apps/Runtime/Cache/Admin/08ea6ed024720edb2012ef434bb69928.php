@@ -15,27 +15,11 @@
 	<!--顶-->
 	<div id="wrap">
 		<div class="container">
-			<div class="collapse navbar-collapse" >
-				<ul class="nav navbar-nav">
-					<li class="active">
-						<a href="#">Home</a>
-					</li>
-					<li>
-						<a href="<?php echo U('GoodsCategory/index');?>">分类管理</a>
-					</li>
-					<li>
-						<a href="#">其他</a>
-					</li>
-				</ul>
-			</div>
-			<!-- /.navbar-collapse -->
-		</div>
-		<div class="container">
-
 			<div class="text-center">
-				<h1>分类管理</h1>
+				<h1>关键字管理</h1>
 			</div>
 			<br>
+
 			<!-- 分类管理-->
 			<form class="form-horizontal" role="form" action="<?php echo U('save');?>" method="post">
 				<div class="form-group">
@@ -46,35 +30,29 @@
 					Readonly></div>
 				</div>
 				<div class="form-group">
-					<label for="ctitle" class="col-sm-2 control-label">Title</label>
+					<label for="CategoryId" class="col-sm-2 control-label">CategoryId</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control " id="ctitle" placeholder=" Title  " name="Title" value="<?php echo ($model["Title"]); ?>" ></div>
+						<input type="text" class="form-control " id="CategoryId" placeholder=" CategoryId  " name="CategoryId" value="<?php echo ($CategoryId); ?>" readonly></div>
 				</div>
 				<div class="form-group">
-					<label for="Presentation" class="col-sm-2 control-label">Presentation</label>
+					<label for="Keyword" class="col-sm-2 control-label">Keyword</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control " id="Presentation" placeholder=" Presentation  "name="Presentation" value="<?php echo ($model["Presentation"]); ?>" ></div>
+						<input type="text" class="form-control " id="Keyword" placeholder=" Keyword  "name="Keyword" value="<?php echo ($model["Keyword"]); ?>" ></div>
 				</div>
 				<div class="form-group">
 					<label for="Status" class="col-sm-2 control-label">Status</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control " id="Status" placeholder=" Status  "name="Status" value="<?php echo ($model["Status"]); ?>" Readonly></div>
 				</div>
-				<div class="form-group ">
-					<label  class="col-sm-2 control-label">Keyword</label>
-					<div class="col-sm-10" >
-						<label class="checkbox-inline">
-							<a class="btn btn-default" href="<?php echo U('GoodsCategoryKeyword/index',array('CategoryId'=> $model['Id']));?>"
-								<?php if($modif == 'add'): ?>disabled="disabled"<?php endif; ?>
-								>关键字管理
-							</a>
-						</label>
-					</div>
+								<div class="form-group">
+					<label for="Hot" class="col-sm-2 control-label">Status</label>
+					<div class="col-sm-10">
+						<input type="num" class="form-control " id="Hot" placeholder=" Hot  "name="Hot" value="<?php echo ($model["Hot"]); ?>" readonly></div>
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
 						<button type="submit" class="btn btn-default">保存</button>
-						<a class="btn btn-default" href="<?php echo U('index');?>">返回</a>
+						<a class="btn btn-default" href="<?php echo U('index',array('CategoryId'=>$CategoryId));?>">返回</a>
 					</div>
 				</div>
 

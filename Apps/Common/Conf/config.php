@@ -12,4 +12,6 @@ return array(
 		'DEFAULT_MODULE'     => 'Home',
 		'MODULE_DENY_LIST'   => array('Common'),
 		'MODULE_ALLOW_LIST'  => array('Home','Admin'),
+		/*多级过滤  */
+		'DEFAULT_FILTER'        => 'strip_tags,htmlspecialchars',
 );

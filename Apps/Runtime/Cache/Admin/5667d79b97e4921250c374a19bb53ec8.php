@@ -14,46 +14,29 @@
 <body>
 	<!--顶-->
 	<div id="wrap">
-			<div class="container">
-			<div class="collapse navbar-collapse" >
-				<ul class="nav navbar-nav">
-					<li class="active">
-						<a href="<?php echo U('Index/index');?>">Home</a>
-					</li>
-					<li>
-						<a href="<?php echo U('GoodsCategory/index');?>">分类管理</a>
-					</li>
-					<li>
-						<a href="#">其他</a>
-					</li>
-				</ul>
-			</div>
-			<!-- /.navbar-collapse -->
-		</div>
 		<div class="container">
 			<!-- 分类管理-->
 			<div class="text-center">
-				<h1>分类列表</h1>
+				<h1>关键字列表</h1>
 			</div>
 			<br>
-			<div><a href="<?php echo U('add');?>" class="btn btn-default">添加</a></div>
+			<div><a href="<?php echo U('add',array('CategoryId'=>$CategoryId));?>" class="btn btn-default">添加</a><a href="<?php echo U('GoodsCategory/index');?>" class="btn btn-default">返回分类</a></div>
 			<br>
 			<table class="table table-bordered">
 				<tr>
 					<th>Id</th>
-					<th>Title</th>
-					<th>Pre</th>
-					<th>Status</th>
+					<th>CategoryId</th>
+					<th>Keyword</th>
+					<th>Status</th><th>Hot</th>
 					<th colspan="2">Operate</th>
 				</tr>
-
 				<?php if(is_array($list)): foreach($list as $key=>$v): ?><tr>
 						<td><?php echo ($v["Id"]); ?></td>
-						<td><?php echo ($v["Title"]); ?></td>
-						<td><?php echo ($v["Presentation"]); ?></td>
-						<td><?php echo ($v["Status"]); ?></td>
+						<td><?php echo ($v["CategoryId"]); ?></td>
+						<td><?php echo ($v["Keyword"]); ?></td>
+						<td><?php echo ($v["Status"]); ?></td><td><?php echo ($v["Hot"]); ?></td>
 						<td>
-							<a href="<?php echo U(del,array('Id'=>$v['Id']));?>">删除</a>
+							<a href="<?php echo U(del,array('Id'=>$v['Id'],'CategoryId'=>$CategoryId));?>">删除</a>
 						</td>
 						<td>
 							<a href="<?php echo U(update,array('Id'=>$v['Id']));?>">编辑</a>

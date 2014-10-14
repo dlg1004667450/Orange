@@ -15,14 +15,16 @@ use Org\Util\String;
 class GoodsCategoryController extends Controller {
 	/**
 	 * 首页
+	 * 
+	 * @author NENER
 	 */
 	public function index() {
 		$model = M ( 'goods_category' );
 		// 查询条件
 		$wherrArr = array (
 				'Status' => array (
-						'gt',
-						- 1 
+						'eq',
+						10 
 				) 
 		);
 		// 总数
@@ -38,6 +40,8 @@ class GoodsCategoryController extends Controller {
 	}
 	/**
 	 * 删除
+	 * 
+	 * @author NENER
 	 */
 	public function del() {
 		$id = ( int ) I ( 'get.Id' );
@@ -68,6 +72,8 @@ class GoodsCategoryController extends Controller {
 	}
 	/**
 	 * 查询要修改的数据
+	 * 
+	 * @author NENER
 	 */
 	public function update() {
 		$id = ( int ) I ( 'get.Id' );
@@ -90,20 +96,55 @@ class GoodsCategoryController extends Controller {
 		}
 	}
 	/**
+	 * 渲染add模板
+	 *  @author NENER
+	 *   */
+	public function add() {
+		$this->assign ( 'modif', 'add' )->display ( 'index/modifcategory' );
+	}
+	/**
 	 * 保存
 	 * 包含更新 ，添加
+	 * 
+	 * @author NENER
 	 */
 	public function save() {
 		if (! IS_POST) {
 			$this->error ( "页面不存在" );
 		}
-		$model = M ( 'goods_category' );
-		$model->Title = I('Title');
-		$model->Presentation = I('Presentation');
-		$whereArr = array (
-				'Id' => ( int ) I ( "post.Id" ) 
+		$modifArr = array (
+				"add",
+				"update" 
 		);
-		$res= $model->where ( $whereArr )->save (); 
+		$modif = strtolower ( I ( 'post.modif' ) );
+		if (! in_array ( $modif, $modifArr )) {
+			$this->error ( "非法操作" );
+		}
+		$model = M ( 'goods_category' );
+		$data['Title'] = I ( 'Title' );
+		$data['Presentation'] = I ( 'Presentation' );
+		if ($modif == "add") {
+			$data['Status']=10;
+			$dal=M();
+			$dal->startTrans();
+			$r1=$model->data($data)->add();
+			$dataKey['CategoryId']=$r1;
+			$dataKey['Keyword']=$data['Title'];
+			$dataKey['Status']=10;
+			$dataKey['Hot']=0;
+			$r2=M('goods_category_keyword')->data($dataKey)->add();
+			if($r1&&$r2){
+				$dal->commit();
+			}else {
+				$dal->rollback();
+				$this->error ( "操作失败" );
+			}
+		} else {
+			$whereArr = array (
+					'Id' => ( int ) I ( "post.Id" ) 
+			);
+			$model->where ( $whereArr )->save ($data);
+		}		
 		$this->success('操作成功',U('index'));
 	}
 }
