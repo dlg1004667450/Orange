@@ -8,3 +8,4 @@ define ( 'APP_NAME', 'Orange' );
 define ( 'APP_PATH', './Apps/' );
 //ok
 require './ORG/ThinkPHP/ThinkPHP.php';
+//no
